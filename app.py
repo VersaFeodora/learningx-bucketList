@@ -1,5 +1,15 @@
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
 from flask import Flask, render_template, request, jsonify
 import pymongo
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+MONGODB_URI = os.environ.get("mongodb+srv://test:sparta@cluster0.btcdwe9.mongodb.net/?retryWrites=true&w=majority")
+DB_NAME =  os.environ.get("dbsparta")
 
 client = pymongo.MongoClient("mongodb+srv://test:sparta@cluster0.btcdwe9.mongodb.net/?retryWrites=true&w=majority")
 db = client.test
